@@ -1,15 +1,29 @@
-﻿namespace PhoneBookTestApp
+﻿using System.Collections.Generic;
+
+namespace PhoneBookTestApp
 {
     public class PhoneBook : IPhoneBook
     {
-        public void AddPerson(Person person)
+        private readonly IPhoneBookDataProvider _phoneBookDataProvider;
+
+        public PhoneBook(IPhoneBookDataProvider phoneBookDataProvider)
         {
-            throw new System.NotImplementedException();
+            _phoneBookDataProvider = phoneBookDataProvider;
         }
 
-        public Person findPerson()
+        public Person FindPerson(string firstName, string lastName)
         {
-            throw new System.NotImplementedException();
+            return _phoneBookDataProvider.FindPerson(firstName, lastName);
+        }
+
+        public bool AddPerson(Person newPerson)
+        {
+            return _phoneBookDataProvider.AddPerson(newPerson);
+        }
+
+        public IList<Person> GetAll()
+        {
+            return _phoneBookDataProvider.GetAll();
         }
     }
 }

@@ -1,8 +1,11 @@
-﻿namespace PhoneBookTestApp
+﻿using System.Collections.Generic;
+
+namespace PhoneBookTestApp
 {
     public interface IPhoneBook
     {
-        Person findPerson(string firstName, string lastName);
-        void addPerson(Person newPerson);
+        Person FindPerson(string firstName, string lastName);
+        bool AddPerson(Person newPerson);
+        IList<Person> GetAll();
     }
 }
